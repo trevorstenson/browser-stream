@@ -34,9 +34,9 @@ pub struct SendScreenData(pub Vec<u8>);
 impl Handler<SendScreenData> for WebSocketConnection {
   type Result = ();
 
-  fn handle(&mut self, _msg: SendScreenData, ctx: &mut Self::Context) {
+  fn handle(&mut self, msg: SendScreenData, ctx: &mut Self::Context) {
     println!("Sending screen data");
-    ctx.binary(_msg.0);
+    ctx.binary(msg.0);
   }
 }
 
